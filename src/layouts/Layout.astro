@@ -1,4 +1,7 @@
 ---
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+import AuHeader from "../components/AuHeader.astro";
 interface Props {
 	title: string;
 }
@@ -17,20 +20,23 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/about/">About</a>
-      <a href="/blog/">Blog</a>
-    </nav>
+		<AuHeader />
 		<slot />
+
+		<script>
+			document.querySelector(".hamburger")?.addEventListener("click", () => {
+				document.querySelector(".nav-links")?.classList.toggle("expanded");
+			});
+		</script>
 	</body>
+
+	<Footer />
 </html>
 <style is:global>
-	
 	html {
 		font-family: system-ui, sans-serif;
 		background: #13151a;
-    color: white;
+		color: white;
 	}
 	code {
 		font-family:
